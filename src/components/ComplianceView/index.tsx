@@ -2,9 +2,10 @@ import React from 'react';
 import { FilterPanel } from '../FilterPanel';
 import { DataTable } from '../DataTable';
 import { CompliancePieChart } from '../CompliancePieChart';
+import { EmployeeStats } from '../EmployeeStats';
 import { getTableColumns } from '../../utils/tableColumns';
 import { FileText, AlertTriangle, CheckCircle } from 'lucide-react';
-import type { ComplianceData, Filters } from '../../types';
+import type { ComplianceData, EmployeeData, Filters } from '../../types';
 
 interface StatCardProps {
   title: string;
@@ -27,6 +28,14 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, icon, color }) => (
   </div>
 );
 
+interface ComplianceViewProps {
+  data: ComplianceData[] | EmployeeData[];
+  filters: Filters;
+  onFilterChange: (key: keyof Filters, value: string) => void;
+  getUniqueValues: (field: keyof ComplianceData | keyof EmployeeData, dataSet: string) => string[];
+  activeTab: string;
+}
+
 export const ComplianceView: React.FC<ComplianceViewProps> = ({
   data,
   filters,
@@ -34,6 +43,20 @@ export const ComplianceView: React.FC<ComplianceViewProps> = ({
   getUniqueValues,
   activeTab,
 }) => {
+  if (activeTab === 'employee') {
+    return (
+      <div className="p-6">
+        <FilterPanel 
+          filters={filters}
+          onFilterChange={onFilterChange}
+          getUniqueValues={getUniqueValues}
+          activeTab={activeTab}
+        />
+        <EmployeeStats data={data as EmployeeData[]} />
+      </div>
+    );
+  }
+
   const columns = getTableColumns(activeTab);
   const totalRecords = data.length;
   const compliantRecords = data.filter(item => item['Compliance Status'] === 'Compliance').length;

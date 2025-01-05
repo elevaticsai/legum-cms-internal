@@ -4,7 +4,7 @@ import { Badge } from '../../../components/ui/badge';
 import { Mail, Plus } from 'lucide-react';
 
 const templates = [
-  { id: 1, name: 'Welcome Email', subject: 'Welcome to Legum CMS', lastModified: '2024-03-10', status: 'Active' },
+  { id: 1, name: 'Welcome Email', subject: 'Welcome to ComplianceHub', lastModified: '2024-03-10', status: 'Active' },
   { id: 2, name: 'Compliance Alert', subject: 'Action Required: Compliance Update', lastModified: '2024-03-05', status: 'Active' },
   { id: 3, name: 'Monthly Report', subject: 'Your Monthly Compliance Report', lastModified: '2024-02-28', status: 'Draft' }
 ];

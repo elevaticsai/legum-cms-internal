@@ -2,13 +2,13 @@ import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import type { EmployeeData } from '../../types';
 
-interface EmployeeOverviewProps {
+interface GenderDistributionProps {
   data: EmployeeData[];
 }
 
-export const EmployeeOverview: React.FC<EmployeeOverviewProps> = ({ data }) => (
+export const GenderDistribution: React.FC<GenderDistributionProps> = ({ data }) => (
   <div className="bg-white rounded-lg shadow-md p-6">
-    <h3 className="text-lg font-semibold mb-4">Employee Overview</h3>
+    <h3 className="text-lg font-semibold mb-4">Gender Distribution</h3>
     <div className="h-[400px]">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data}>
@@ -19,21 +19,15 @@ export const EmployeeOverview: React.FC<EmployeeOverviewProps> = ({ data }) => (
           <Legend />
           <Line 
             type="monotone" 
-            dataKey="Total No of Employee" 
-            stroke="#4f46e5" 
-            name="Total Employees"
+            dataKey="Male" 
+            stroke="#3b82f6" 
+            name="Male"
           />
           <Line 
             type="monotone" 
-            dataKey="Total Joinee" 
-            stroke="#22c55e" 
-            name="New Joiners"
-          />
-          <Line 
-            type="monotone" 
-            dataKey="Total Resigned" 
-            stroke="#ef4444" 
-            name="Resigned"
+            dataKey="Female" 
+            stroke="#ec4899" 
+            name="Female"
           />
         </LineChart>
       </ResponsiveContainer>

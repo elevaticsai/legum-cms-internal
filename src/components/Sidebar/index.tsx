@@ -27,10 +27,11 @@ export const Sidebar: React.FC = () => {
           <MenuItem icon={LayoutDashboard} label="Dashboard" path="/dashboard" collapsed={collapsed} />
           <MenuItem icon={Users} label="Clients" path="/clients" collapsed={collapsed} />
           <MenuItem icon={FileText} label="Reports" path="/reports" collapsed={collapsed} />
-          <MenuItem icon={Bell} label="Notification" path="/notifications" collapsed={collapsed} />
-          <MenuItem icon={Settings} label="Settings" path="/settings" collapsed={collapsed} />
+          <MenuItem icon={Bell} label="Notifications" path="/notifications" collapsed={collapsed} />
+  
           <MenuItem icon={Calendar} label="Compliance Calendar" path="/calendar" collapsed={collapsed} />
           <MenuItem icon={BarChart2} label="Analytics" path="/analytics" collapsed={collapsed} />
+          <MenuItem icon={Settings} label="Settings" path="/settings" collapsed={collapsed} />
           <MenuItem icon={HelpCircle} label="Help & Support" path="/help" collapsed={collapsed} />
         </div>
       </div>
@@ -42,7 +43,7 @@ export const Sidebar: React.FC = () => {
         <ChevronLeft className={`w-5 h-5 transition-transform duration-300 ${
           collapsed ? 'rotate-180' : ''
         }`} />
-        {!collapsed && <span className="ml-2">Collapse</span>}
+        {!collapsed && <span className="ml-2">-</span>}
       </button>
     </div>
   );
